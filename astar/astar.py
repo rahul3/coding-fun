@@ -5,17 +5,11 @@ input_map = [[False, False, False, False],
             [False, False, False, False],
             [False, False, False, False]]
 
-
 class Node(object):
-
-    """
-    Class to create a Node with attributes we need for the 
-    A star algorithm
-    """
     
     def __init__(self, input_node, target_node):
         """Initalizing"""
-        
+        print(f"Input node is {input_node}, target node is {target_node}")
         self.coords = input_node
         self.target_coords = target_node
         self.score = self.heuristic(input_node, target_node)
@@ -65,7 +59,7 @@ class Node(object):
         """
         options = []
         final_options = []
-        left, right, top, bottom = None
+        left, right, top, bottom = "None"
         rows, cols = self.get_dimensions(input_map)
         left = (self.coords[0]-1, self.coords[1]) if self.coords[0]-1 >= 0 else "None"
         right = (self.coords[0]+1, self.coords[1]) if self.coords[0]+1 <= cols else "None"
@@ -119,18 +113,9 @@ class Node(object):
     def get_hscore(self):
         return self.score
 
-
-
-
 class AStar(object):
-
-    """
-        TODO - To finish this
-    """
     
     def __init__(self, input_map=None, initial=None, target=None):
-        
-
         
         if input_map is None:
             self.input_map = [[False, False, False, False],
@@ -141,18 +126,20 @@ class AStar(object):
         if initial is None:
             self.start = (2, 2)
             
-        if target is None:
+        if target is not None:
+            self.target = target
+        else:
             self.target = (0, 0)
             
         self.visited_nodes = []  # all coordinates visited
         self.path = [] # traversal path
         
-    def astar(self, start_node, end_node):
+    def astar(self, start_node=None, end_node=None):
         """ A Star algorithm"""
-
-        self.start = start_node
-        self.end = end_node
-        self.current = Node(self.start, end_node)
+        print(self.target)
+        self.start = start_node if start_node is not None else self.start
+        self.end = self.target if end_node is None else end_node
+        self.current = Node(self.start, self.end)
         self.iterations = 0 # testing code
         self.visited_nodes.append(self.current)
         
@@ -182,3 +169,6 @@ class AStar(object):
                             ### TO DO
 
         return [x.coords for x in self.visited_nodes]
+
+a = AStar()
+a.astar()
