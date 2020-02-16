@@ -10,5 +10,5 @@ The table below lists the file name and the problem statement associated with it
 
 
 
-[max_concurrency_desc]: <https://github.com/rahul3/coding-fun/>
-[max_concurrency_file]: <https://github.com/rahul3/coding-fun/>
+[max_concurrency_desc]: <https://github.com/rahul3/coding-fun/blob/master/concurrency/max_concurrency.md>
+[max_concurrency_file]: <https://github.com/rahul3/coding-fun/blob/master/concurrency/max_concurrency.py>
